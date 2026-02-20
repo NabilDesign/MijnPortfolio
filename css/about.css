@@ -1,0 +1,22 @@
+.about-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 4rem; align-items: start; }
+
+.about-text p { margin-bottom: 1.2rem; line-height: 1.85; font-size: 1.02rem; }
+.about-text strong { color: var(--blue); font-weight: 500; }
+
+.about-path { background: var(--surface); border: 1px solid var(--border); padding: 1.8rem; position: relative; }
+.about-path::before { content: 'LEERPAD'; position: absolute; top: -0.6rem; left: 1.5rem; background: var(--surface); padding: 0 0.5rem; font-family: 'Orbitron', monospace; font-size: 0.6rem; letter-spacing: 3px; color: var(--blue); }
+
+.path-item { display: flex; gap: 1rem; padding: 0.8rem 0; border-bottom: 1px solid var(--border); align-items: flex-start; }
+.path-item:last-child { border-bottom: none; }
+
+.path-dot { width: 10px; height: 10px; border-radius: 50%; border: 2px solid var(--border-bright); flex-shrink: 0; margin-top: 4px; }
+.path-dot.done   { background: var(--blue); border-color: var(--blue); box-shadow: 0 0 8px var(--blue); }
+.path-dot.active { background: var(--cyan); border-color: var(--cyan); box-shadow: 0 0 8px var(--cyan); animation: blink-dot 1.5s infinite; }
+
+.path-text { font-size: 0.9rem; color: var(--text); }
+.path-text .status { font-size: 0.7rem; font-family: 'Orbitron', monospace; letter-spacing: 1px; margin-top: 0.15rem; }
+.path-text .status.done   { color: var(--blue); }
+.path-text .status.active { color: var(--cyan); }
+.path-text .status.todo   { color: var(--dim); }
+
+@media (max-width: 768px) { .about-grid { grid-template-columns: 1fr; gap: 2rem; } }

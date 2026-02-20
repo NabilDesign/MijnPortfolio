@@ -1,0 +1,15 @@
+.certs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; }
+
+.cert-card { background: var(--surface); border: 1px solid var(--border); padding: 1.8rem; transition: all 0.3s; position: relative; overflow: hidden; cursor: default; }
+.cert-card::before { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: linear-gradient(90deg, var(--blue), var(--cyan)); transition: width 0.4s; box-shadow: 0 0 8px var(--blue); }
+.cert-card:hover { border-color: var(--border-bright); box-shadow: 0 4px 30px var(--blue-glow); transform: translateY(-3px); }
+.cert-card:hover::before { width: 100%; }
+
+.cert-icon   { font-size: 2rem; margin-bottom: 1rem; }
+.cert-name   { font-family: 'Orbitron', monospace; font-size: 0.8rem; font-weight: 700; color: var(--text-bright); letter-spacing: 2px; margin-bottom: 0.4rem; }
+.cert-issuer { font-size: 0.8rem; color: var(--dim); margin-bottom: 1rem; }
+
+.cert-status { display: inline-flex; align-items: center; gap: 0.4rem; font-family: 'Orbitron', monospace; font-size: 0.6rem; letter-spacing: 2px; padding: 0.3rem 0.7rem; border: 1px solid; }
+.cert-status.behaald { border-color: var(--blue); color: var(--blue); }
+.cert-status.bezig   { border-color: var(--cyan); color: var(--cyan); }
+.cert-status.gepland { border-color: var(--dim);  color: var(--dim); }

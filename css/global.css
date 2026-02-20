@@ -1,0 +1,92 @@
+:root {
+    --blue:          #00b4ff;
+    --blue2:         #0066cc;
+    --blue-glow:     rgba(0, 180, 255, 0.18);
+    --blue-dim:      rgba(0, 180, 255, 0.08);
+    --cyan:          #00e5ff;
+    --bg:            #020812;
+    --bg2:           #050f1c;
+    --surface:       #071525;
+    --surface2:      #0a1e33;
+    --border:        rgba(0, 180, 255, 0.18);
+    --border-bright: rgba(0, 180, 255, 0.5);
+    --text:          #b8d4e8;
+    --text-bright:   #e8f4ff;
+    --dim:           #3a6080;
+    --green:         #00ff9f;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    overflow-x: hidden;
+}
+
+.bg-anim { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+.bg-anim::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+            radial-gradient(ellipse 80% 60% at 20% 20%, rgba(0,100,200,0.12) 0%, transparent 60%),
+            radial-gradient(ellipse 60% 80% at 80% 80%, rgba(0,180,255,0.07) 0%, transparent 60%),
+            radial-gradient(ellipse 40% 40% at 50% 50%, rgba(0,50,120,0.10) 0%, transparent 70%);
+}
+.bg-anim::after {
+    content: '';
+    position: absolute; inset: 0;
+    background-image:
+            linear-gradient(rgba(0,180,255,0.04) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(0,180,255,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+}
+
+.scanlines {
+    position: fixed; inset: 0; z-index: 1000; pointer-events: none;
+    background: repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0,0,0,0.08) 3px, rgba(0,0,0,0.08) 4px);
+}
+
+.section-wrap { max-width: 1200px; margin: 0 auto; padding: 6rem 3rem; position: relative; z-index: 10; }
+
+.section-head { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 3.5rem; }
+.section-num { font-family: 'Orbitron', monospace; font-size: 0.65rem; color: var(--blue); opacity: 0.5; letter-spacing: 2px; }
+.section-title { font-family: 'Orbitron', monospace; font-size: 1.5rem; font-weight: 700; color: var(--text-bright); letter-spacing: 3px; text-transform: uppercase; }
+.section-title span { color: var(--blue); }
+.section-line { flex: 1; height: 1px; background: var(--border); }
+
+.btn {
+    font-family: 'Orbitron', monospace; font-size: 0.7rem; letter-spacing: 2px;
+    padding: 0.85rem 2.2rem; text-decoration: none; text-transform: uppercase;
+    transition: all 0.3s; display: inline-flex; align-items: center; gap: 0.5rem;
+    cursor: pointer; border: none;
+    clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+}
+.btn-primary { background: var(--blue); color: var(--bg); font-weight: 700; }
+.btn-primary:hover { background: var(--cyan); box-shadow: 0 0 25px rgba(0,180,255,0.4); }
+.btn-outline { color: var(--blue); border: 1px solid var(--border-bright); background: transparent; }
+.btn-outline:hover { background: var(--blue-dim); box-shadow: 0 0 20px var(--blue-glow); border-color: var(--blue); }
+
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal.visible { opacity: 1; transform: none; }
+
+.stagger > * { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
+.stagger.visible > *:nth-child(1) { transition-delay: 0.05s; }
+.stagger.visible > *:nth-child(2) { transition-delay: 0.12s; }
+.stagger.visible > *:nth-child(3) { transition-delay: 0.19s; }
+.stagger.visible > *:nth-child(4) { transition-delay: 0.26s; }
+.stagger.visible > *:nth-child(5) { transition-delay: 0.33s; }
+.stagger.visible > *:nth-child(6) { transition-delay: 0.40s; }
+.stagger.visible > * { opacity: 1; transform: none; }
+
+@keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+@keyframes blink-dot { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+@keyframes pulse-border {
+    0%, 100% { box-shadow: 0 0 12px var(--blue-glow), inset 0 0 8px var(--blue-dim); }
+    50%       { box-shadow: 0 0 20px rgba(0,180,255,0.35), inset 0 0 12px rgba(0,180,255,0.15); }
+}
+
+@media (max-width: 768px) { .section-wrap { padding: 4rem 1.5rem; } }

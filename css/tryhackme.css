@@ -1,0 +1,27 @@
+.thm-section { display: grid; grid-template-columns: 1fr 1.2fr; gap: 3rem; align-items: start; }
+
+.thm-card { background: var(--surface); border: 1px solid var(--border); padding: 2rem; position: relative; overflow: hidden; }
+.thm-card::after { content: ''; position: absolute; top: 0; right: 0; width: 80px; height: 80px; background: radial-gradient(circle, rgba(0,180,255,0.1), transparent 70%); }
+
+.thm-logo { font-family: 'Orbitron', monospace; font-size: 0.7rem; letter-spacing: 3px; color: var(--green); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem; }
+.thm-logo::before { content: '⚑'; font-size: 1rem; }
+.thm-username { font-family: 'Orbitron', monospace; font-size: 1.4rem; font-weight: 700; color: var(--text-bright); margin-bottom: 0.3rem; }
+.thm-sub { font-size: 0.85rem; color: var(--dim); margin-bottom: 1.8rem; }
+
+.thm-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.thm-stat { background: var(--bg2); border: 1px solid var(--border); padding: 0.9rem; text-align: center; }
+.thm-stat-num { font-family: 'Orbitron', monospace; font-size: 1.3rem; font-weight: 700; color: var(--green); }
+.thm-stat-label { font-size: 0.65rem; letter-spacing: 1px; color: var(--dim); text-transform: uppercase; margin-top: 0.2rem; }
+
+.thm-rooms { display: flex; flex-direction: column; gap: 1rem; }
+.thm-room { background: var(--surface); border: 1px solid var(--border); padding: 1.2rem 1.5rem; display: flex; justify-content: space-between; align-items: center; transition: border-color 0.3s; }
+.thm-room:hover { border-color: var(--border-bright); }
+.thm-room-name { font-size: 0.95rem; color: var(--text-bright); font-weight: 500; margin-bottom: 0.2rem; }
+.thm-room-cat { font-size: 0.75rem; color: var(--dim); font-family: 'Orbitron', monospace; letter-spacing: 1px; }
+
+.thm-room-badge { font-family: 'Orbitron', monospace; font-size: 0.6rem; letter-spacing: 1px; padding: 0.3rem 0.7rem; border: 1px solid; text-transform: uppercase; white-space: nowrap; }
+.thm-room-badge.done     { border-color: var(--green); color: var(--green); }
+.thm-room-badge.progress { border-color: var(--cyan);  color: var(--cyan); }
+.thm-room-badge.upcoming { border-color: var(--dim);   color: var(--dim); }
+
+@media (max-width: 768px) { .thm-section { grid-template-columns: 1fr; gap: 2rem; } }
